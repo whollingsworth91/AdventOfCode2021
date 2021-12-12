@@ -1,6 +1,9 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include <thread>
+
+using namespace std::chrono_literals;
 
 #define PRINT_DEBUG_STATEMENTS 0
 
@@ -112,4 +115,11 @@ int main(int argc, char* argv[])
 
 	std::cout << "What do you get if you multiply your final horizontal position by your final depth?: " << answer1 << std::endl << std::endl;
 	std::cout << "What do you get if you multiply your final horizontal position by your final depth using aim?: " << answer2 << std::endl << std::endl;
+
+	// sleep to keep cmd window open
+	std::string in;
+	while (in.compare("exit") != 0) {
+		std::cin >> in;
+		std::this_thread::sleep_for(2000ms);
+	}
 }

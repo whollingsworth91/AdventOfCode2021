@@ -1,6 +1,9 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include <thread>
+
+using namespace std::chrono_literals;
 
 #define PRINT_DEBUG_STATEMENTS 0
 
@@ -127,4 +130,11 @@ int main(int argc, char* argv[])
 
 	std::cout << "How many measurements are larger than the previous measurement?: " << answer1 << std::endl << std::endl;
 	std::cout << "How many sums are larger than the previous sum?: " << answer2 << std::endl << std::endl;
+
+	// sleep to keep cmd window open
+	std::string in;
+	while (in.compare("exit") != 0) {
+		std::cin >> in;
+		std::this_thread::sleep_for(2000ms);
+	}
 }
