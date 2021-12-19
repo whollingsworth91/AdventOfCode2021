@@ -2,7 +2,6 @@
 #include <fstream>
 #include <sstream>
 #include <vector>
-#include <math.h>
 
 #define PRINT_DEBUG_STATEMENTS 0
 typedef unsigned long long ull;
