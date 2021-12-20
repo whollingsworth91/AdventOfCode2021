@@ -26,7 +26,7 @@ int getHowMuchFuelToAlignPos(std::string fpath)
 
 	while (std::getline(input, line))
 	{
-		int pos = 0;
+		size_t pos = 0;
 		std::string delimiter = ",";
 		while ((pos = line.find(delimiter)) != std::string::npos) {
 			horizontalPositions.push_back(std::stoi(line.substr(0, pos), nullptr, 10));
@@ -89,7 +89,7 @@ int getHowMuchExpensiveFuelToAlignPos(std::string fpath)
 
 	while (std::getline(input, line))
 	{
-		int pos = 0;
+		size_t pos = 0;
 		std::string delimiter = ",";
 		while ((pos = line.find(delimiter)) != std::string::npos) {
 			horizontalPositions.push_back(std::stoi(line.substr(0, pos), nullptr, 10));

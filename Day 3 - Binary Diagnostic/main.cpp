@@ -95,7 +95,7 @@ int getLifeSupportRating(std::string fpath)
 	// parse file for life support rating
 	std::string line;
 	std::string binaryStr;
-	int binLength = 0;
+	size_t binLength = 0;
 
 	std::string oxygenGeneratorRatingStr;
 	std::string co2ScrubberRatingStr;
@@ -117,13 +117,13 @@ int getLifeSupportRating(std::string fpath)
 
 	binLength = binaryStr.length();
 
-	int i = 0;
+	size_t i = 0;
 	while (i < binLength) {
 		// calculate oxygen rating
 		if (oxyGenRatingStrs.size() > 1) {
 			// calculate '1' and '0' prevalence
-			int numOnes = 0;
-			int numZeroes = std::count_if(oxyGenRatingStrs.begin(), oxyGenRatingStrs.end(), [&i, &numOnes](const std::string& str) {
+			int64_t numOnes = 0;
+			int64_t numZeroes = std::count_if(oxyGenRatingStrs.begin(), oxyGenRatingStrs.end(), [&i, &numOnes](const std::string& str) {
 				if (str.at(i) == '0') {
 					return true;
 				}
@@ -146,8 +146,8 @@ int getLifeSupportRating(std::string fpath)
 		// calculate CO2 scrubber rating
 		if (co2ScrubberRatingStrs.size() > 1) {
 			// calculate '1' and '0' prevalence
-			int numOnes = 0;
-			int numZeroes = std::count_if(co2ScrubberRatingStrs.begin(), co2ScrubberRatingStrs.end(), [&i, &numOnes](const std::string& str) {
+			int64_t numOnes = 0;
+			int64_t numZeroes = std::count_if(co2ScrubberRatingStrs.begin(), co2ScrubberRatingStrs.end(), [&i, &numOnes](const std::string& str) {
 				if (str.compare("") != 0 && str.at(i) == '0') {
 					return true;
 				}

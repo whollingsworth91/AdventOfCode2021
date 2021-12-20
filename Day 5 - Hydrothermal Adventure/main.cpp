@@ -346,12 +346,7 @@ int getPositionsWithAtLeastTwoOverlappingLinesIncludingDiagonal(std::string fpat
 						int row = aVerticalIsLarger ? ventLines[i].end.vertical + verDiff : ventLines[i].start.vertical - verDiff;
 
 						//printf("\tpos:[%d, %d]\n", column, row);
-						try {
-							overlappingLines[row][column] += 1;
-						}
-						catch (const char* message) {
-							int m = 8;
-						}
+						overlappingLines[row][column] += 1;
 					}
 				}
 				else if (diff2d.horizontal < 0 && diff2d.vertical < 0) {

@@ -4,10 +4,9 @@
 #include <vector>
 
 #define PRINT_DEBUG_STATEMENTS 0
-typedef unsigned long long ull;
 
 // part 1 & part 2: How many lanternfish would there be after N days?
-ull getNumLanternfishAtNDays(std::string fpath, int afterHowManyDays)
+uint64_t getNumLanternfishAtNDays(std::string fpath, int afterHowManyDays)
 {
 	// open file for parsing
 	std::ifstream input;
@@ -20,11 +19,11 @@ ull getNumLanternfishAtNDays(std::string fpath, int afterHowManyDays)
 	// parse file for aim calculation
 	std::string line;
 	std::string ageOfLanternfish;
-	std::vector<ull> fishAges = std::vector<ull>(9);
+	std::vector<uint64_t> fishAges = std::vector<uint64_t>(9);
 
 	while (std::getline(input, line))
 	{
-		int pos = 0;
+		size_t pos = 0;
 		std::string delimiter = ",";
 		while ((pos = line.find(delimiter)) != std::string::npos) {
 			fishAges[std::stoi(line.substr(0, pos), nullptr, 10)] += 1;
@@ -39,7 +38,7 @@ ull getNumLanternfishAtNDays(std::string fpath, int afterHowManyDays)
 	std::cout << std::endl;
 
 	// process input
-	std::vector<ull> numTherePreviousDay = std::vector<ull>(fishAges);
+	std::vector<uint64_t> numTherePreviousDay = std::vector<uint64_t>(fishAges);
 	printf("Day 0: %lld, %lld, %lld, %lld, %lld, %lld, %lld, %lld, %lld", fishAges[0], fishAges[1], fishAges[2], fishAges[3], fishAges[4], fishAges[5], fishAges[6], fishAges[7], fishAges[8]);
 
 	for (int i = 0; i < afterHowManyDays; i++) {
@@ -59,13 +58,13 @@ ull getNumLanternfishAtNDays(std::string fpath, int afterHowManyDays)
 		}
 
 		numTherePreviousDay.clear();
-		numTherePreviousDay = std::vector<ull>(fishAges);
+		numTherePreviousDay = std::vector<uint64_t>(fishAges);
 	}
 	printf("\nDay %d (last day): %lld, %lld, %lld, %lld, %lld, %lld, %lld, %lld, %lld", afterHowManyDays, fishAges[0], fishAges[1], fishAges[2], fishAges[3], fishAges[4], fishAges[5], fishAges[6], fishAges[7], fishAges[8]);
 	printf("\n");
 
 	// count lanternfish
-	ull fishAgeCount = 0;
+	uint64_t fishAgeCount = 0;
 	for (int i = 0; i < fishAges.size(); i++) {
 		fishAgeCount += fishAges[i];
 	}
@@ -84,10 +83,10 @@ int main(int argc, char* argv[])
 	// https://adventofcode.com/2021/day/6
 	int howManyDaysQ1 = 80;
 	int howManyDaysQ2 = 256;
-	ull answer1 = getNumLanternfishAtNDays(fpath, howManyDaysQ1);
+	uint64_t answer1 = getNumLanternfishAtNDays(fpath, howManyDaysQ1);
 	printf("How many lanternfish would there be after %d days?: %llu\n", howManyDaysQ1, answer1);
 
-	ull answer2 = getNumLanternfishAtNDays(fpath, howManyDaysQ2);
+	uint64_t answer2 = getNumLanternfishAtNDays(fpath, howManyDaysQ2);
 	printf("How many lanternfish would there be after %d days?: %llu\n", howManyDaysQ2, answer2);
 
 	std::string cin;
